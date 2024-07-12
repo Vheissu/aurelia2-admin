@@ -1,0 +1,39 @@
+<h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
+  Settings
+</h2>
+<div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
+  <div class="mb-4">
+    <label class="flex items-center">
+      <input
+        type="checkbox"
+        checked.bind="settings.notifications"
+        class="form-checkbox h-5 w-5 text-indigo-600"
+      />
+      <span class="ml-2 text-gray-700 dark:text-gray-300"
+        >Enable notifications</span
+      >
+    </label>
+  </div>
+  <div class="mb-4">
+    <label class="flex items-center">
+      <input
+        type="checkbox"
+        checked.bind="settings.darkMode"
+        change.trigger="toggleSetting('darkMode')"
+        class="form-checkbox h-5 w-5 text-indigo-600"
+      />
+      <span class="ml-2 text-gray-700 dark:text-gray-300">Dark mode</span>
+    </label>
+  </div>
+  <div class="mb-4">
+    <label class="block text-gray-700 dark:text-gray-300 mb-2">Language</label>
+    <select
+      value.bind="settings.language"
+      class="form-select mt-1 block w-full bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+    >
+      <option value="en">English</option>
+      <option value="es">Spanish</option>
+      <option value="fr">French</option>
+    </select>
+  </div>
+</div>

@@ -1,13 +1,68 @@
-<h2 class="text-2xl font-semibold text-gray-800 mb-6">Dashboard</h2>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-  <div repeat.for="stat of stats" class="bg-white rounded-lg shadow-md p-6">
-    <div class="flex items-center">
-      <div class="p-3 rounded-full bg-indigo-600 bg-opacity-75">
-        <i class="text-white ${stat.icon}"></i>
+<div class="page">
+  <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div>
+      <h2 class="text-3xl font-semibold">Operational Overview</h2>
+      <p class="text-sm text-[color:var(--muted)]">A quiet, precise view of today’s system health.</p>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <button class="btn-secondary">Export snapshot</button>
+      <button class="btn-primary">Create alert</button>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+    <div repeat.for="stat of stats" class="card p-4">
+      <div class="flex items-start justify-between">
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-[color:var(--muted)]">${stat.title}</p>
+          <p class="text-2xl font-semibold mt-2">${stat.value}</p>
+        </div>
+        <span class="pill">${stat.delta}</span>
       </div>
-      <div class="ml-4">
-        <p class="mb-2 text-sm font-medium text-gray-600">${stat.title}</p>
-        <p class="text-lg font-semibold text-gray-700">${stat.value}</p>
+      <p class="text-xs text-[color:var(--muted)] mt-3">Last 7 days</p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
+    <div class="card p-4">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h3 class="text-lg font-semibold">Weekly performance</h3>
+          <p class="text-sm text-[color:var(--muted)]">Volume across your core workflows.</p>
+        </div>
+        <span class="badge">Live</span>
+      </div>
+      <div class="stat-bar">
+        <div repeat.for="day of performance" style="height: ${day.value}%"></div>
+      </div>
+      <div class="grid grid-cols-7 mt-4 text-xs text-[color:var(--muted)]">
+        <span repeat.for="day of performance">${day.label}</span>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-6">
+      <div class="card p-4">
+        <h3 class="text-lg font-semibold mb-4">Activity</h3>
+        <div class="grid gap-2">
+          <div repeat.for="item of activity" class="list-row">
+            <span class="status-dot"></span>
+            <div>
+              <div class="font-semibold">${item.title}</div>
+              <div class="text-sm text-[color:var(--muted)]">${item.detail}</div>
+              <div class="text-xs text-[color:var(--muted)] mt-1">${item.time}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-4">
+        <h3 class="text-lg font-semibold mb-4">Signal health</h3>
+        <div class="grid gap-3">
+          <div repeat.for="signal of signals" class="flex items-center justify-between text-sm">
+            <span class="text-[color:var(--muted)]">${signal.label}</span>
+            <span class="mono">${signal.value}</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>

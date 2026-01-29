@@ -1,0 +1,48 @@
+<div class="page">
+  <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div>
+      <h2 class="text-3xl font-semibold">System Health</h2>
+      <p class="text-sm text-[color:var(--muted)]">Status across your core services.</p>
+    </div>
+    <button class="btn-secondary">View status page</button>
+  </div>
+
+  <div class="grid gap-4 md:grid-cols-3">
+    <div repeat.for="metric of metrics" class="card p-4">
+      <div class="text-xs uppercase tracking-[0.2em] text-[color:var(--muted)]">${metric.label}</div>
+      <div class="text-2xl font-semibold mt-2">${metric.value}</div>
+    </div>
+  </div>
+
+  <div class="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+    <div class="card overflow-hidden">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Status</th>
+            <th>Latency</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr repeat.for="service of services">
+            <td>${service.name}</td>
+            <td><span class="pill">${service.status}</span></td>
+            <td class="mono">${service.latency}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">Incidents</h3>
+      <div class="grid gap-3">
+        <div repeat.for="incident of incidents" class="card-muted p-4">
+          <div class="font-semibold">${incident.title}</div>
+          <div class="text-sm text-[color:var(--muted)]">${incident.detail}</div>
+          <div class="text-xs text-[color:var(--muted)] mt-2">${incident.time}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

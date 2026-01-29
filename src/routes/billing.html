@@ -1,0 +1,61 @@
+<div class="page">
+  <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div>
+      <h2 class="text-3xl font-semibold">Billing</h2>
+      <p class="text-sm text-[color:var(--muted)]">Manage your plan, payment methods, and invoices.</p>
+    </div>
+    <button class="btn-primary">Upgrade plan</button>
+  </div>
+
+  <div class="grid gap-6 lg:grid-cols-[2fr_1fr]">
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">Plan details</h3>
+      <div class="grid gap-2 text-sm text-[color:var(--muted)]">
+        <div class="flex items-center justify-between">
+          <span>Current plan</span>
+          <span class="pill">Enterprise</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span>Seats</span>
+          <span class="mono">48</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span>Renewal</span>
+          <span class="mono">Feb 14, 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">Payment methods</h3>
+      <div class="grid gap-4">
+        <div repeat.for="method of paymentMethods" class="card-muted p-4">
+          <div class="font-semibold">${method.label}</div>
+          <div class="text-sm text-[color:var(--muted)]">${method.detail}</div>
+          <div class="text-xs text-[color:var(--muted)] mt-2">${method.status}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card overflow-hidden">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Invoice</th>
+          <th>Date</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr repeat.for="invoice of invoices">
+          <td class="mono">${invoice.id}</td>
+          <td>${invoice.date}</td>
+          <td>${invoice.amount}</td>
+          <td><span class="pill">${invoice.status}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

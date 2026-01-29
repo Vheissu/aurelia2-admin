@@ -1,0 +1,43 @@
+<div class="page">
+  <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div>
+      <h2 class="text-3xl font-semibold">Team Activity</h2>
+      <p class="text-sm text-[color:var(--muted)]">Operational updates across your teams.</p>
+    </div>
+    <button class="btn-secondary">Share update</button>
+  </div>
+
+  <div class="grid gap-4 md:grid-cols-3">
+    <div repeat.for="item of highlights" class="card p-4">
+      <div class="text-xs uppercase tracking-[0.2em] text-[color:var(--muted)]">${item.label}</div>
+      <div class="text-2xl font-semibold mt-2">${item.value}</div>
+    </div>
+  </div>
+
+  <div class="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">Latest updates</h3>
+      <div class="grid gap-2">
+        <div repeat.for="update of updates" class="list-row">
+          <span class="status-dot"></span>
+          <div>
+            <div class="font-semibold">${update.title}</div>
+            <div class="text-sm text-[color:var(--muted)]">${update.detail}</div>
+            <div class="text-xs text-[color:var(--muted)]">${update.actor} · ${update.time}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">Teams</h3>
+      <div class="grid gap-4">
+        <div repeat.for="team of teams" class="card-muted p-4">
+          <div class="font-semibold">${team.name}</div>
+          <div class="text-sm text-[color:var(--muted)]">${team.focus}</div>
+          <div class="text-xs text-[color:var(--muted)] mt-2">${team.members} members</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

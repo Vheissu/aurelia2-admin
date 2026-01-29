@@ -1,39 +1,84 @@
-<h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
-  Settings
-</h2>
-<div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
-  <div class="mb-4">
-    <label class="flex items-center">
-      <input
-        type="checkbox"
-        checked.bind="settings.notifications"
-        class="form-checkbox h-5 w-5 text-indigo-600"
-      />
-      <span class="ml-2 text-gray-700 dark:text-gray-300"
-        >Enable notifications</span
-      >
-    </label>
+<div class="page">
+  <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div>
+      <h2 class="text-3xl font-semibold">Settings</h2>
+      <p class="text-sm text-[color:var(--muted)]">Configure the workspace with deliberate defaults.</p>
+    </div>
+    <button class="btn-secondary">View audit log</button>
   </div>
-  <div class="mb-4">
-    <label class="flex items-center">
-      <input
-        type="checkbox"
-        checked.bind="settings.darkMode"
-        change.trigger="toggleSetting('darkMode')"
-        class="form-checkbox h-5 w-5 text-indigo-600"
-      />
-      <span class="ml-2 text-gray-700 dark:text-gray-300">Dark mode</span>
-    </label>
-  </div>
-  <div class="mb-4">
-    <label class="block text-gray-700 dark:text-gray-300 mb-2">Language</label>
-    <select
-      value.bind="settings.language"
-      class="form-select mt-1 block w-full bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200"
-    >
-      <option value="en">English</option>
-      <option value="es">Spanish</option>
-      <option value="fr">French</option>
-    </select>
+
+  <div class="grid gap-6 lg:grid-cols-2">
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">General</h3>
+      <div class="grid gap-4">
+        <div>
+          <label class="text-xs uppercase tracking-[0.2em] text-[color:var(--muted)]">Workspace language</label>
+          <select
+            value.bind="settings.language"
+            change.trigger="updateLanguage()"
+            class="input mt-2"
+          >
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-xs uppercase tracking-[0.2em] text-[color:var(--muted)]">Default region</label>
+          <div class="input mt-2">North America (us-east-1)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">Notifications</h3>
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="font-semibold">Workflow notifications</div>
+          <div class="text-sm text-[color:var(--muted)]">Stay updated on approvals and alerts.</div>
+        </div>
+        <label class="switch">
+          <input
+            type="checkbox"
+            checked.bind="settings.notifications"
+            change.trigger="toggleSetting('notifications')"
+          />
+          <span></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">Appearance</h3>
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="font-semibold">Dark mode</div>
+          <div class="text-sm text-[color:var(--muted)]">Reduce glare for late sessions.</div>
+        </div>
+        <label class="switch">
+          <input
+            type="checkbox"
+            checked.bind="settings.darkMode"
+            change.trigger="toggleSetting('darkMode')"
+          />
+          <span></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">Security</h3>
+      <div class="grid gap-3 text-sm text-[color:var(--muted)]">
+        <div class="flex items-center justify-between">
+          <span>Multi-factor authentication</span>
+          <span class="pill">Enabled</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span>Session timeout</span>
+          <span class="mono">30 min</span>
+        </div>
+        <button class="btn-primary mt-2">Review access</button>
+      </div>
+    </div>
   </div>
 </div>

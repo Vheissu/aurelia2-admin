@@ -1,4 +1,4 @@
-import { IRouter, IRouteViewModel, Params, RouteNode } from '@aurelia/router-lite';
+import { IRouter, IRouteViewModel, Params, RouteNode } from '@aurelia/router';
 import { AuthService } from './services/auth-service';
 import { lifecycleHooks } from 'aurelia';
 

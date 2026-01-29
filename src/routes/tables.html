@@ -1,0 +1,30 @@
+<div class="page">
+  <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div>
+      <h2 class="text-3xl font-semibold">Tables</h2>
+      <p class="text-sm text-[color:var(--muted)]">Structured datasets for operational review.</p>
+    </div>
+    <button class="btn-secondary">Export</button>
+  </div>
+
+  <div class="card p-4">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Account</th>
+          <th>Status</th>
+          <th>Owner</th>
+          <th>Updated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr repeat.for="row of rows">
+          <td>${row.name}</td>
+          <td><span class="pill">${row.status}</span></td>
+          <td>${row.owner}</td>
+          <td>${row.updated}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

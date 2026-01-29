@@ -1,0 +1,63 @@
+<div class="page">
+  <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div>
+      <h2 class="text-3xl font-semibold">Profile</h2>
+      <p class="text-sm text-[color:var(--muted)]">Manage identity, security, and active sessions.</p>
+    </div>
+    <button class="btn-secondary">Edit profile</button>
+  </div>
+
+  <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">Profile details</h3>
+      <div class="grid gap-3 text-sm">
+        <div class="flex items-center justify-between">
+          <span class="text-[color:var(--muted)]">Name</span>
+          <span>${profile.name}</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-[color:var(--muted)]">Role</span>
+          <span>${profile.role}</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-[color:var(--muted)]">Email</span>
+          <span>${profile.email}</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-[color:var(--muted)]">Location</span>
+          <span>${profile.location}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">Security posture</h3>
+      <div class="grid gap-3">
+        <div repeat.for="item of security" class="flex items-center justify-between text-sm">
+          <span class="text-[color:var(--muted)]">${item.label}</span>
+          <span class="pill">${item.value}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-4">
+    <h3 class="text-lg font-semibold mb-4">Active devices</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Device</th>
+          <th>Location</th>
+          <th>Last seen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr repeat.for="device of devices">
+          <td>${device.name}</td>
+          <td>${device.location}</td>
+          <td>${device.lastSeen}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

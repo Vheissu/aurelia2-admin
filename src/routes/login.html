@@ -1,69 +1,62 @@
-<div class="flex items-center justify-center min-h-[calc(100vh-64px)] bg-gray-100 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full space-y-8 bg-white dark:bg-gray-800 p-10 rounded-xl shadow-2xl">
+<div class="login-card">
+  <div class="login-panel">
+    <span class="badge">Private</span>
+    <div>
+      <h2 class="text-3xl font-semibold">Welcome back</h2>
+      <p class="text-sm text-[color:var(--muted)] mt-3">
+        Access your operations suite with a calm, minimal workspace.
+      </p>
+    </div>
+    <ul class="login-list">
+      <li><span class="login-dot"></span><span>Daily monitoring and reporting tools.</span></li>
+      <li><span class="login-dot"></span><span>Secure access with audit trails.</span></li>
+      <li><span class="login-dot"></span><span>Curated workspace presets.</span></li>
+    </ul>
+  </div>
+
+  <div class="login-form">
+    <div>
+      <h3 class="text-2xl font-semibold">Sign in</h3>
+      <p class="text-sm text-[color:var(--muted)] mt-2">Use your admin credentials to continue.</p>
+    </div>
+    <form class="grid gap-4" submit.trigger="login()">
       <div>
-        <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 dark:text-white">
-          Welcome Back
-        </h2>
-        <p class="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
-          Sign in to your account
-        </p>
+        <label class="form-label">Email</label>
+        <input
+          id="email-address"
+          name="email"
+          type="email"
+          autocomplete="email"
+          required
+          class="input mt-2"
+          placeholder="you@company.com"
+          value.bind="email"
+        />
       </div>
-      <form class="mt-8 space-y-6" submit.trigger="login()">
-        <div class="rounded-md shadow-sm -space-y-px">
-          <div class="mb-4">
-            <label for="email-address" class="sr-only">Email address</label>
-            <input
-              id="email-address"
-              name="email"
-              type="email"
-              autocomplete="email"
-              required
-              class="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition duration-300"
-              placeholder="Email address"
-              value.bind="email"
-            />
-          </div>
-          <div>
-            <label for="password" class="sr-only">Password</label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              autocomplete="current-password"
-              required
-              class="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm transition duration-300"
-              placeholder="Password"
-              value.bind="password"
-            />
-          </div>
-        </div>
-  
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded dark:border-gray-600 dark:bg-gray-700">
-            <label for="remember-me" class="ml-2 block text-sm text-gray-900 dark:text-gray-300">
-              Remember me
-            </label>
-          </div>
-  
-          <div class="text-sm">
-            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
-              Forgot your password?
-            </a>
-          </div>
-        </div>
-  
-        <div>
-          <button
-            type="submit"
-            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105"
-          >
-            Sign in
-          </button>
-        </div>
-      </form>
-      <div if.bind="errorMessage" class="mt-2 text-center text-sm text-red-600 bg-red-100 dark:bg-red-900 dark:text-red-200 p-2 rounded-md">
-        ${errorMessage}
+      <div>
+        <label class="form-label">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          required
+          class="input mt-2"
+          placeholder="••••••••"
+          value.bind="password"
+        />
       </div>
+      <div class="login-actions">
+        <label class="flex items-center gap-2">
+          <input id="remember-me" name="remember-me" type="checkbox" class="accent-[color:var(--accent)]" />
+          Keep me signed in
+        </label>
+        <a href="#" class="text-[color:var(--accent)]">Reset password</a>
+      </div>
+      <button type="submit" class="btn-primary w-full">Enter workspace</button>
+    </form>
+    <div if.bind="errorMessage" class="text-sm text-[color:var(--accent)]">
+      ${errorMessage}
     </div>
   </div>
+</div>

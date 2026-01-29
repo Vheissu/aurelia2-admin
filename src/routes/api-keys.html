@@ -1,0 +1,66 @@
+<div class="page">
+  <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div>
+      <h2 class="text-3xl font-semibold">API Keys</h2>
+      <p class="text-sm text-[color:var(--muted)]">Manage access tokens, scopes, and rotation schedules.</p>
+    </div>
+    <button class="btn-primary">Generate key</button>
+  </div>
+
+  <div class="grid gap-4 md:grid-cols-3">
+    <div repeat.for="item of summaries" class="card p-4">
+      <div class="text-xs uppercase tracking-[0.2em] text-[color:var(--muted)]">${item.label}</div>
+      <div class="text-2xl font-semibold mt-2">${item.value}</div>
+    </div>
+  </div>
+
+  <div class="grid gap-6 lg:grid-cols-[1.6fr_1fr]">
+    <div class="card overflow-hidden">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Scope</th>
+            <th>Created</th>
+            <th>Last used</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr repeat.for="key of keys">
+            <td>
+              <div class="font-semibold">${key.name}</div>
+              <div class="text-xs text-[color:var(--muted)]">Owner ${key.owner}</div>
+            </td>
+            <td>${key.scope}</td>
+            <td>${key.created}</td>
+            <td>${key.lastUsed}</td>
+            <td><span class="pill">${key.status}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid gap-6">
+      <div class="card p-4">
+        <h3 class="text-lg font-semibold mb-4">Security policies</h3>
+        <div class="grid gap-3">
+          <div repeat.for="policy of policies" class="flex items-center justify-between text-sm">
+            <span class="text-[color:var(--muted)]">${policy.label}</span>
+            <span>${policy.value}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-4">
+        <h3 class="text-lg font-semibold mb-4">Alerts</h3>
+        <div class="grid gap-3">
+          <div repeat.for="alert of alerts" class="flex items-center justify-between text-sm">
+            <span class="text-[color:var(--muted)]">${alert.label}</span>
+            <span class="mono">${alert.value}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

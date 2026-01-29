@@ -1,4 +1,4 @@
-import { IRouter } from '@aurelia/router-lite';
+import { IRouter } from '@aurelia/router';
 import { AuthService } from '../services/auth-service';
 
 export class Login {

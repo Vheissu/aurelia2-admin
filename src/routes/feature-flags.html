@@ -1,0 +1,37 @@
+<div class="page">
+  <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div>
+      <h2 class="text-3xl font-semibold">Feature Flags</h2>
+      <p class="text-sm text-[color:var(--muted)]">Control releases without disrupting core services.</p>
+    </div>
+    <button class="btn-primary">Create flag</button>
+  </div>
+
+  <div class="grid gap-4 md:grid-cols-3">
+    <div repeat.for="env of environments" class="card p-4">
+      <div class="text-xs uppercase tracking-[0.2em] text-[color:var(--muted)]">${env.name}</div>
+      <div class="text-lg font-semibold mt-2">${env.health}</div>
+    </div>
+  </div>
+
+  <div class="card overflow-hidden">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Flag</th>
+          <th>Status</th>
+          <th>Exposure</th>
+          <th>Environment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr repeat.for="flag of flags">
+          <td>${flag.name}</td>
+          <td><span class="pill">${flag.status}</span></td>
+          <td>${flag.exposure}</td>
+          <td>${flag.env}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

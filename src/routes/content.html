@@ -1,0 +1,42 @@
+<div class="page">
+  <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div>
+      <h2 class="text-3xl font-semibold">Content</h2>
+      <p class="text-sm text-[color:var(--muted)]">Manage announcements, guides, and release notes.</p>
+    </div>
+    <button class="btn-primary">New post</button>
+  </div>
+
+  <div class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+    <div class="card p-4">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Author</th>
+            <th>Updated</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr repeat.for="item of items">
+            <td>${item.title}</td>
+            <td><span class="pill">${item.status}</span></td>
+            <td>${item.author}</td>
+            <td>${item.updated}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">Categories</h3>
+      <div class="grid gap-3">
+        <div repeat.for="cat of categories" class="flex items-center justify-between text-sm">
+          <span>${cat.name}</span>
+          <span class="mono">${cat.count}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

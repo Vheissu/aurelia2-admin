@@ -1,0 +1,25 @@
+<div class="page">
+  <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div>
+      <h2 class="text-3xl font-semibold">Audit Log</h2>
+      <p class="text-sm text-[color:var(--muted)]">A precise record of sensitive actions.</p>
+    </div>
+    <button class="btn-secondary">Export log</button>
+  </div>
+
+  <div class="card p-4">
+    <div class="grid gap-4">
+      <div repeat.for="entry of entries" class="list-row">
+        <span class="status-dot"></span>
+        <div class="flex-1">
+          <div class="font-semibold">${entry.action}</div>
+          <div class="text-sm text-[color:var(--muted)]">${entry.detail}</div>
+        </div>
+        <div class="text-xs text-[color:var(--muted)] text-right">
+          <div>${entry.actor}</div>
+          <div>${entry.time}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="page">
+  <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div>
+      <h2 class="text-3xl font-semibold">Analytics</h2>
+      <p class="text-sm text-[color:var(--muted)]">Track engagement across your premium accounts.</p>
+    </div>
+    <button class="btn-secondary">Download report</button>
+  </div>
+
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+    <div repeat.for="kpi of kpis" class="card p-4">
+      <div class="text-xs uppercase tracking-[0.2em] text-[color:var(--muted)]">${kpi.label}</div>
+      <div class="text-2xl font-semibold mt-2">${kpi.value}</div>
+      <div class="text-xs text-[color:var(--muted)] mt-2">${kpi.change} vs last week</div>
+    </div>
+  </div>
+
+  <div class="grid gap-6 lg:grid-cols-2">
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">Segment performance</h3>
+      <div class="grid gap-3">
+        <div repeat.for="segment of segments" class="flex items-center justify-between">
+          <span>${segment.name}</span>
+          <span class="mono">${segment.value}</span>
+          <span class="text-sm text-[color:var(--muted)]">${segment.trend}</span>
+        </div>
+      </div>
+    </div>
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">Traffic sources</h3>
+      <div class="grid gap-3">
+        <div repeat.for="source of sources" class="flex items-center justify-between">
+          <span>${source.name}</span>
+          <span class="mono">${source.value}</span>
+          <span class="text-sm text-[color:var(--muted)]">${source.change}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-4">
+    <h3 class="text-lg font-semibold mb-4">Retention</h3>
+    <div class="grid gap-3 md:grid-cols-4">
+      <div repeat.for="row of retention" class="card-muted p-4">
+        <div class="text-xs uppercase tracking-[0.2em] text-[color:var(--muted)]">${row.label}</div>
+        <div class="text-xl font-semibold mt-2">${row.value}</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="page">
+  <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div>
+      <h2 class="text-3xl font-semibold">Projects</h2>
+      <p class="text-sm text-[color:var(--muted)]">Track initiatives across teams.</p>
+    </div>
+    <button class="btn-primary">New project</button>
+  </div>
+
+  <div class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">Active projects</h3>
+      <div class="grid gap-3">
+        <div repeat.for="project of projects" class="flex items-center justify-between text-sm">
+          <div>
+            <div class="font-semibold">${project.name}</div>
+            <div class="text-xs text-[color:var(--muted)]">Owner ${project.owner}</div>
+          </div>
+          <div class="text-right">
+            <span class="pill">${project.status}</span>
+            <div class="text-xs text-[color:var(--muted)]">Due ${project.due}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">Priority tasks</h3>
+      <div class="grid gap-3">
+        <div repeat.for="task of tasks" class="flex items-center justify-between text-sm">
+          <div>
+            <div class="font-semibold">${task.title}</div>
+            <div class="text-xs text-[color:var(--muted)]">${task.assignee}</div>
+          </div>
+          <span class="pill">${task.status}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

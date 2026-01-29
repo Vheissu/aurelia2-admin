@@ -1,0 +1,38 @@
+<div class="page">
+  <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div>
+      <h2 class="text-3xl font-semibold">Forms</h2>
+      <p class="text-sm text-[color:var(--muted)]">Standardize intake across teams.</p>
+    </div>
+    <button class="btn-primary">Create template</button>
+  </div>
+
+  <div class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">Form templates</h3>
+      <div class="grid gap-3">
+        <div repeat.for="item of templates" class="flex items-center justify-between text-sm">
+          <span class="font-semibold">${item.name}</span>
+          <span class="pill">${item.status}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">Quick submit</h3>
+      <div class="grid gap-3">
+        <label class="form-label">Requester</label>
+        <input class="input" placeholder="Full name" />
+        <label class="form-label">Category</label>
+        <select class="input">
+          <option>Incident</option>
+          <option>Access</option>
+          <option>Vendor</option>
+        </select>
+        <label class="form-label">Details</label>
+        <textarea class="input" rows="3" placeholder="Provide context"></textarea>
+        <button class="btn-secondary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

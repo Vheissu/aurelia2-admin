@@ -1,0 +1,25 @@
+<div class="page">
+  <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div>
+      <h2 class="text-3xl font-semibold">Integrations</h2>
+      <p class="text-sm text-[color:var(--muted)]">Connect trusted services to your admin stack.</p>
+    </div>
+    <button class="btn-primary">Add integration</button>
+  </div>
+
+  <div class="grid gap-4 md:grid-cols-2">
+    <div repeat.for="tool of tools" class="card p-4">
+      <div class="flex items-start justify-between">
+        <div>
+          <div class="text-lg font-semibold">${tool.name}</div>
+          <div class="text-sm text-[color:var(--muted)]">${tool.detail}</div>
+        </div>
+        <span class="pill">${tool.status}</span>
+      </div>
+      <div class="flex gap-2 mt-4">
+        <button class="btn-secondary">Configure</button>
+        <button class="btn-ghost">Disconnect</button>
+      </div>
+    </div>
+  </div>
+</div>

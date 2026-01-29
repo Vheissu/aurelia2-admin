@@ -1,0 +1,90 @@
+<div class="page">
+  <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div>
+      <h2 class="text-3xl font-semibold">Roles & Permissions</h2>
+      <p class="text-sm text-[color:var(--muted)]">Define access boundaries with precision.</p>
+    </div>
+    <button class="btn-primary">Create role</button>
+  </div>
+
+  <div class="grid gap-4 md:grid-cols-3">
+    <div repeat.for="item of summaries" class="card p-4">
+      <div class="text-xs uppercase tracking-[0.2em] text-[color:var(--muted)]">${item.label}</div>
+      <div class="text-2xl font-semibold mt-2">${item.value}</div>
+    </div>
+  </div>
+
+  <div class="grid gap-4 md:grid-cols-2">
+    <div repeat.for="role of roles" class="card p-4">
+      <div class="flex items-start justify-between">
+        <div>
+          <div class="text-lg font-semibold">${role.name}</div>
+          <div class="text-sm text-[color:var(--muted)]">${role.scope}</div>
+        </div>
+        <span class="pill">${role.status}</span>
+      </div>
+      <div class="flex items-center justify-between mt-4 text-sm text-[color:var(--muted)]">
+        <span>Assigned users</span>
+        <span class="mono">${role.users}</span>
+      </div>
+      <div class="text-xs text-[color:var(--muted)] mt-2">Last updated ${role.lastUpdated}</div>
+    </div>
+  </div>
+
+  <div class="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">Permission matrix</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Permission</th>
+            <th>Admin</th>
+            <th>Ops</th>
+            <th>Analyst</th>
+            <th>Support</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr repeat.for="perm of permissions">
+            <td>${perm.label}</td>
+            <td><span class="pill">${perm.admin ? 'Yes' : 'No'}</span></td>
+            <td><span class="pill">${perm.ops ? 'Yes' : 'No'}</span></td>
+            <td><span class="pill">${perm.analyst ? 'Yes' : 'No'}</span></td>
+            <td><span class="pill">${perm.support ? 'Yes' : 'No'}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid gap-6">
+      <div class="card p-4">
+        <h3 class="text-lg font-semibold mb-4">Assignments</h3>
+        <div class="grid gap-3">
+          <div repeat.for="assignment of assignments" class="flex items-center justify-between text-sm">
+            <div>
+              <div class="font-semibold">${assignment.role}</div>
+              <div class="text-xs text-[color:var(--muted)]">Owner ${assignment.owner}</div>
+            </div>
+            <div class="text-right">
+              <div class="mono">${assignment.members}</div>
+              <div class="text-xs text-[color:var(--muted)]">Coverage ${assignment.coverage}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-4">
+        <h3 class="text-lg font-semibold mb-4">Access policies</h3>
+        <div class="grid gap-3">
+          <div repeat.for="policy of policies" class="flex items-center justify-between text-sm">
+            <div>
+              <div class="font-semibold">${policy.label}</div>
+              <div class="text-xs text-[color:var(--muted)]">Scope ${policy.scope}</div>
+            </div>
+            <span class="pill">${policy.status}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

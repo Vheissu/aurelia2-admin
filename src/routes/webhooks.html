@@ -1,0 +1,38 @@
+<div class="page">
+  <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+    <div>
+      <h2 class="text-3xl font-semibold">Webhooks</h2>
+      <p class="text-sm text-[color:var(--muted)]">Deliver events to your operational stack.</p>
+    </div>
+    <button class="btn-primary">Add endpoint</button>
+  </div>
+
+  <div class="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">Endpoints</h3>
+      <div class="grid gap-4">
+        <div repeat.for="endpoint of endpoints" class="card-muted p-4">
+          <div class="flex items-start justify-between">
+            <div>
+              <div class="font-semibold">${endpoint.name}</div>
+              <div class="text-sm text-[color:var(--muted)]">${endpoint.url}</div>
+            </div>
+            <span class="pill">${endpoint.status}</span>
+          </div>
+          <div class="text-xs text-[color:var(--muted)] mt-2">Last delivery ${endpoint.lastDelivery}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-4">
+      <h3 class="text-lg font-semibold mb-4">Recent deliveries</h3>
+      <div class="grid gap-3">
+        <div repeat.for="delivery of deliveries" class="flex items-center justify-between text-sm">
+          <span class="mono">${delivery.id}</span>
+          <span class="text-[color:var(--muted)]">${delivery.time}</span>
+          <span class="pill">${delivery.status}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

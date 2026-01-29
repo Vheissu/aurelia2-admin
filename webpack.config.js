@@ -12,7 +12,7 @@ const postcssLoader = {
   options: {
     postcssOptions: {
       plugins: [
-        require('tailwindcss')('tailwind.config.js'),
+        require('@tailwindcss/postcss')(),
         'autoprefixer'
       ]
     }
@@ -94,7 +94,6 @@ function getAureliaDevAliases() {
     'platform-browser',
     'route-recognizer',
     'router',
-    'router-lite',
     'runtime',
     'runtime-html',
     'testing',
